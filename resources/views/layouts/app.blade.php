@@ -12,48 +12,44 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <style>
+    body
+    {
+        background:white !important;
+    }
+
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-expand-md navbar-dark shadow-sm nav" >
             <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="img/logo.png" alt="" width="80px">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" >
+                    <span class="navbar-toggler-icon " ></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                    <ul class="navbar-nav mr-auto">
                     </ul>
-
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="navbar-nav " style="direction: rtl;" >
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                            <li class="dropdown navbar-nav">
+                                <a href="#" class="dropdown-toggle nav-link text btn" style="color:white !important" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu ">
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -66,12 +62,24 @@
                                 </ul>
                             </li>
                         @endguest
-                    </ul>
+                        </ul>
                 </div>
             </div>
         </nav>
-
+        <div class="container" > 
+            <div class="row" >
         @yield('content')
+        <div class="col-4 col-md-4" style="margin-top: 100px;">
+                <ul class="list-group">
+                    <a href="{{route('content')}}" class="list-group-item bsec1 " style="width: 100%;" > <li style="list-style: none;text-align: right;" >تعديل المحتوي</li></a>
+                    <a href="#" class="list-group-item bsec1" style="width: 100%;" > <li style="list-style: none;text-align: right;" >الحجوزات</li></a>
+                    <a href="#" class="list-group-item bsec1" style="width: 100%;" > <li style="list-style: none;text-align: right;" >حذف المستخدم</li></a>
+                    <a href="#" class="list-group-item bsec1" style="width: 100%;" > <li style="list-style: none;text-align: right;" >إنشاء المشرف</li></a>
+                  </ul>
+            </div>
+        </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->

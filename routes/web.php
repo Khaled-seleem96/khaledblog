@@ -16,5 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('/admin/content/index','adminController@index')->name('content');
+Route::post('/admin/content/insert','adminController@store')->name('insert');
+Route::get('/admin/content/insert','adminController@create')->name('upload');
 Route::get('/home', 'HomeController@index')->name('home');
