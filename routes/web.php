@@ -19,4 +19,7 @@ Auth::routes();
 Route::get('/admin/content/index','adminController@index')->name('content');
 Route::post('/admin/content/insert','adminController@store')->name('insert');
 Route::get('/admin/content/insert','adminController@create')->name('upload');
+Route::get('/delete/{id}','adminController@destroy');
+Route::get('/edit/{id}','adminController@edit')->name('edit');
+Route::post('/update/{id}','adminController@update')->name('update');
 Route::get('/home', 'HomeController@index')->name('home');

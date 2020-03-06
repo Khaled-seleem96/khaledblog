@@ -69,6 +69,7 @@
         <div class="container" > 
             <div class="row" >
         @yield('content')
+        @auth
         <div class="col-4 col-md-4" style="margin-top: 100px;">
                 <ul class="list-group">
                     <a href="{{route('content')}}" class="list-group-item bsec1 " style="width: 100%;" > <li style="list-style: none;text-align: right;" >تعديل المحتوي</li></a>
@@ -77,6 +78,7 @@
                     <a href="#" class="list-group-item bsec1" style="width: 100%;" > <li style="list-style: none;text-align: right;" >إنشاء المشرف</li></a>
                   </ul>
             </div>
+            @endauth
         </div>
         </div>
 

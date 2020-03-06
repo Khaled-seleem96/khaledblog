@@ -21,11 +21,11 @@
   @foreach($data as $d)
     <tr>
       <th scope="row">{{$d->id}}</th>
-      <td>{{$d->img}}</td>
+      <td><img src="{{asset($d->img)}}" alt="this is image" width='80px'></td>
       <td>{{$d->title}}</td>
       
-      <td><a href="#" class="btn ">تغير</a></td>
-      <td><a href="#" class="btn ">حذف</a></td>
+      <td><a href="/edit/{{$d->id}}" class="btn ">تغير</a></td>
+      <td><a href="/delete/{{$d->id}}" class="btn ">حذف</a></td>
     </tr>
     @endforeach
   </tbody>

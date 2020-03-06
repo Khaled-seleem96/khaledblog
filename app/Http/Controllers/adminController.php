@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Content;
 class adminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,12 +43,16 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $x=new Content();
-        $x->img=$request->img;
+        $img = $request->img;
+        $img_name = time().$img->getClientOriginalName();
+
+        $img->move('uploads/img',$img_name);
+
+        $x->img = 'uploads/img/' . $img_name;
         $x->title=$request->title;
         $x->save();
-        return redirect()->back();
+        return redirect()->route('content');
     }
 
     /**
@@ -66,6 +75,8 @@ class adminController extends Controller
     public function edit($id)
     {
         //
+        $x=Content::findOrFail($id);
+        return view('admin.content.edit')->with('d',$x);
     }
 
     /**
@@ -78,6 +89,18 @@ class adminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $x=Content::findOrFail($id);
+        $img = $request->img;
+        $img_name = time().$img->getClientOriginalName();
+
+        $img->move('uploads/img',$img_name);
+
+        $x->img = 'uploads/img/' . $img_name;
+        $x->title=$request->title;
+        $x->save();
+        return redirect()->route('content');
+
+        
     }
 
     /**
@@ -89,5 +112,8 @@ class adminController extends Controller
     public function destroy($id)
     {
         //
+        $d=Content::findOrFail($id);
+        $d->delete();
+        return redirect()->back();
     }
 }
