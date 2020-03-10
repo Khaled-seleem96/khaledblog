@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Content;
+use App\order;
 class adminController extends Controller
 {
 
@@ -21,6 +22,13 @@ class adminController extends Controller
         //
         $x=Content::all();
         return view('admin.content.index')->with('data',$x);
+
+    }
+    public function order()
+    {
+        //
+        $x=order::all();
+        return view('admin.orders.index')->with('data',$x);
 
     }
 

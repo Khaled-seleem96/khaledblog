@@ -12,8 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.index');
 });
+Route::get('/about', function () {
+    return view('user.about');
+});
+Route::get('/gallery', function () {
+    return view('user.gallery');
+});
+Route::get('/userlogin','Login\LoginController@index')->name('userlogin');
+Route::get('/reg','Login\RegController@index')->name('reg');
+Route::post('/regg','Login\RegController@create')->name('regg');
+
 
 Auth::routes();
 Route::get('/admin/content/index','adminController@index')->name('content');
@@ -23,3 +33,4 @@ Route::get('/delete/{id}','adminController@destroy');
 Route::get('/edit/{id}','adminController@edit')->name('edit');
 Route::post('/update/{id}','adminController@update')->name('update');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/order/index','adminController@order')->name('order');
