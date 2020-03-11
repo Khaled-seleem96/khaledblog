@@ -8,6 +8,6 @@ class Login extends Model
 {
     //
     protected $fillable = [
-        
-    ]
+        'name', 'address','phone','email', 'password',
+    ];
 }
